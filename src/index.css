@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    font-family: "Meiryo", "MS PGothic", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "sans-serif";
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: "Meiryo", "MS PGothic", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "sans-serif";
+}
