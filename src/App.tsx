@@ -17,12 +17,16 @@ let restheme = createMuiTheme({
   // カラーパレットを利用してテーマカラーの設定する
   palette: {
     primary: {
-      main: '#ab003c',
+      main: '#050505',
+      // ab003c
     },
     secondary: {
-      light: '#ee99fc',
-      main: '#0d47a1',
-      contrastText: '#ee99fc',
+      light: '#050505',
+      dark:'#050505',
+      // 目立つボタン(contained)のときの、ボタンの背景色
+      main: '#c191e6',
+      // 目立つボタン(contained)のときの、ボタンの文字色
+      contrastText: '#050505',
     },
   }
 });
@@ -44,13 +48,13 @@ const useStyles = makeStyles((theme: Theme) =>
     list: {
       width: 300,
       height: 400,
-      backgroundColor: '#fafafa',
+      // backgroundColor: '#fafafa',
       overflow: 'auto',
     },
     // 結果表示用アイテム
     carditem: {
       height: 100,
-      fontSize: '3rem',
+      fontSize: '1.5rem',
       padding: '2em',
       fontStyle: 'bold',
       borderRadius: 3,
@@ -336,9 +340,11 @@ function App() {
         <header className="App-header">
           東京都漫才道中くじ＠
           {new Date().getFullYear()}
-      </header>
+        </header>
 
-        <Grid item>
+        <Grid item
+          alignItems="center"
+        >
 
           {viewItem(cityname)}
 
@@ -347,9 +353,11 @@ function App() {
 
         <FormGroup>
           <Grid
+            container
             direction="row"
+            justify="center"
+            alignItems="center"
           >
-
             <Button
               variant="outlined"
               size="small"
@@ -358,7 +366,7 @@ function App() {
               disabled={leftChecked.length === 0}
               aria-label="move selected right"
             >
-              →
+              ＞＞＞未実施に移動＞＞＞
           </Button>
             <Button
               variant="outlined"
@@ -368,10 +376,11 @@ function App() {
               disabled={rightChecked.length === 0}
               aria-label="move selected left"
             >
-              ←
+              ＜＜＜実施済に移動＜＜＜
           </Button>
             <Button
-              variant="outlined"
+              variant="contained"
+              color="secondary"
               // onClick={drawItem}
               onClick={() => drawItem(right)}
               disabled={right.length === 0}
@@ -380,28 +389,30 @@ function App() {
 
           </Button>
           </Grid>
-          {/* 大枠の設定する */}
-          <Grid container
-            spacing={4}
-            justify="flex-start"
-            alignItems="center"
-            className={classes.root}
-            direction="row"
+        </FormGroup>
+        {/* 大枠の設定する */}
+        <Grid container
+          spacing={4}
+          justify="center"
+          alignItems="center"
+          className={classes.root}
+          direction="row"
+          item xs zeroMinWidth
+        >
+
+          <Grid item
+            alignItems="baseline"
           >
-
-            <Grid item
-              alignItems="baseline"
-            >
-              {customList('アップロード済', left)}
-            </Grid>
-
-            <Grid item>
-              {customList('未実施', right)}
-            </Grid>
-
+            {customList('実施済み', left)}
           </Grid>
 
-        </FormGroup>
+          <Grid item>
+            {customList('未実施', right)}
+          </Grid>
+
+        </Grid>
+
+
 
       </ThemeProvider>
       <footer>
